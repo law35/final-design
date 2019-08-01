@@ -1,4 +1,3 @@
-
 (function(){
 	function QuoteGen(element){
 		this.el = document.querySelector(element);
@@ -6,6 +5,7 @@
 	}
 	
 	QuoteGen.prototype = {
+	    //Selects and initialize the necesary elements in the targeted HTML file
 		init: function(){
 			this.wrapper = this.el.querySelector(".generator-wrapper");
 			this.quotes = this.el.querySelectorAll(".quote");
@@ -19,6 +19,7 @@
 			this.stopStart();
 		},
 		_slideTo: function(quote){
+		    //Displays each quote.
 			var currentQuote = this.quotes[quote];
 			currentQuote.style.opacity = 1;
 			
@@ -30,6 +31,7 @@
 			}
 		},
 		action: function(){
+		    //Sets the display time of each quote.
 			var self = this;
 			self.timer = setInterval(function(){
 				self.index++;
@@ -41,6 +43,7 @@
 			}, 10000);
 		},
 		stopStart: function(){
+		    //Allows the user to halt the quote change.
 			var self = this;
 			self.el.addEventListener("mouseover",function(){
 				clearInterval(self.timer);
